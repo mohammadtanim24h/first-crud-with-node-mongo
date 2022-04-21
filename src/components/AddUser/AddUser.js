@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
+    const navigate = useNavigate();
     const handleAddUser = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -18,6 +20,8 @@ const AddUser = () => {
             .then((res) => res.json())
             .then((data) => {
                 console.log("success", data);
+                alert("user added succesfully!!")
+                e.target.reset();
             });
     };
     return (
@@ -36,6 +40,7 @@ const AddUser = () => {
                 <br />
                 <input type="submit" value="Add User" />
             </form>
+            <button onClick={() => navigate(-1)}>Return Home</button>
         </div>
     );
 };
